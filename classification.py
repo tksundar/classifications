@@ -8,7 +8,7 @@ from sklearn.metrics import accuracy_score,precision_score,recall_score
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
-import requests
+
 
 BOLD_START = '\033[1m'
 END = '\033[0m'
@@ -21,16 +21,7 @@ GREEN = '\033[92m'
 YELLOW = '\033[93m'
 RED = '\033[91m'
 
-url =
-local_filename = 'fruits.txt'
-
-with requests.get(url, stream=True) as response:
-    response.raise_for_status()
-    with open(local_filename, 'wb') as file:
-        for chunk in response.iter_content(chunk_size=8192):
-            file.write(chunk)
-
-fruits_data = pd.read_table('fruits.txt')
+fruits_data = pd.read_csv('fruits.csv')
 sns.countplot(x=fruits_data['fruit_name'])
 print('%s%s%s%s'%(BOLD_START,UNDERLINE,'Count Plot',END))
 plt.show()
